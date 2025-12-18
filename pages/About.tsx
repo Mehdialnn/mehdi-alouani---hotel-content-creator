@@ -57,17 +57,14 @@ const About: React.FC = () => {
             <Reveal>
               <h2 className="text-4xl md:text-5xl font-serif mb-6 text-charcoal">Start a Project</h2>
               <p className="text-charcoal/60 max-w-md mb-8">
-                Ready to elevate your property's visual presence? Fill out the form or reach out directly via email or WhatsApp.
+                Ready to elevate your property's visual presence? Fill out the form or reach out directly.
               </p>
-              
+
               <div className="space-y-6">
                 <a href="mailto:hello@mehdi-alouani.com" className="block text-xl hover:text-gold transition-colors font-serif border-b border-charcoal/10 pb-4">
                   hello@mehdi-alouani.com
                 </a>
-                <a href="https://wa.me/66812345678" className="block text-xl hover:text-gold transition-colors font-serif border-b border-charcoal/10 pb-4">
-                  +66 81 234 5678 (WhatsApp)
-                </a>
-                <a href="#" className="block text-xl hover:text-gold transition-colors font-serif border-b border-charcoal/10 pb-4">
+                <a href="https://instagram.com/mehdixaln" target="_blank" rel="noopener noreferrer" className="block text-xl hover:text-gold transition-colors font-serif border-b border-charcoal/10 pb-4">
                   @mehdixaln
                 </a>
               </div>

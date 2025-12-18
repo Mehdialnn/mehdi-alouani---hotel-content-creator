@@ -44,7 +44,7 @@ const ImageSlider: React.FC<ImageSliderProps> = ({ hotelId, defaultImage, title,
   };
 
   return (
-    <div className={`relative group overflow-hidden ${isTall ? 'h-full min-h-[400px] md:min-h-full' : 'aspect-[3/4]'}`}>
+    <div className={`relative group overflow-hidden ${isTall ? 'h-full min-h-[300px] md:min-h-full' : 'aspect-[4/5] md:aspect-[3/4]'}`}>
       <AnimatePresence mode="wait">
         <motion.img
           key={currentIndex}
@@ -61,24 +61,24 @@ const ImageSlider: React.FC<ImageSliderProps> = ({ hotelId, defaultImage, title,
       {/* Hover overlay */}
       <div className="absolute inset-0 bg-black/20 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
 
-      {/* Navigation arrows - only show if more than 1 image */}
+      {/* Navigation arrows - only show if more than 1 image, hidden on mobile */}
       {allImages.length > 1 && (
         <>
           <button
             onClick={prevImage}
-            className="absolute left-3 top-1/2 -translate-y-1/2 w-8 h-8 bg-white/90 backdrop-blur rounded-full flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 hover:bg-white"
+            className="absolute left-2 md:left-3 top-1/2 -translate-y-1/2 w-6 h-6 md:w-8 md:h-8 bg-white/90 backdrop-blur rounded-full hidden md:flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 hover:bg-white"
           >
-            <ChevronLeft className="w-4 h-4 text-charcoal" />
+            <ChevronLeft className="w-3 h-3 md:w-4 md:h-4 text-charcoal" />
           </button>
           <button
             onClick={nextImage}
-            className="absolute right-3 top-1/2 -translate-y-1/2 w-8 h-8 bg-white/90 backdrop-blur rounded-full flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 hover:bg-white"
+            className="absolute right-2 md:right-3 top-1/2 -translate-y-1/2 w-6 h-6 md:w-8 md:h-8 bg-white/90 backdrop-blur rounded-full hidden md:flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 hover:bg-white"
           >
-            <ChevronRight className="w-4 h-4 text-charcoal" />
+            <ChevronRight className="w-3 h-3 md:w-4 md:h-4 text-charcoal" />
           </button>
 
-          {/* Image counter dots */}
-          <div className="absolute bottom-14 left-1/2 -translate-x-1/2 flex gap-1.5 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+          {/* Image counter dots - hidden on mobile */}
+          <div className="absolute bottom-10 md:bottom-14 left-1/2 -translate-x-1/2 hidden md:flex gap-1.5 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
             {allImages.map((_, idx) => (
               <div
                 key={idx}
@@ -89,13 +89,13 @@ const ImageSlider: React.FC<ImageSliderProps> = ({ hotelId, defaultImage, title,
         </>
       )}
 
-      {/* Hotel info overlay */}
-      <div className={`absolute bottom-6 left-6 right-6 translate-y-4 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-500 flex justify-between items-end text-white`}>
+      {/* Hotel info overlay - hidden on mobile, visible on hover for desktop */}
+      <div className={`absolute bottom-3 md:bottom-6 left-3 md:left-6 right-3 md:right-6 translate-y-4 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-500 hidden md:flex justify-between items-end text-white`}>
         <div>
-          <h3 className={`font-serif ${isTall ? 'text-2xl md:text-3xl' : 'text-xl md:text-2xl'} italic`}>{title}</h3>
-          <p className="text-[10px] uppercase tracking-widest opacity-80 mt-1">{location}</p>
+          <h3 className={`font-serif ${isTall ? 'text-xl md:text-3xl' : 'text-base md:text-2xl'} italic`}>{title}</h3>
+          <p className="text-[8px] md:text-[10px] uppercase tracking-widest opacity-80 mt-1">{location}</p>
         </div>
-        <ArrowUpRight className={`${isTall ? 'w-5 h-5' : 'w-4 h-4'}`} />
+        <ArrowUpRight className={`${isTall ? 'w-4 h-4 md:w-5 md:h-5' : 'w-3 h-3 md:w-4 md:h-4'}`} />
       </div>
     </div>
   );

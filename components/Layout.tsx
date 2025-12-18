@@ -38,10 +38,10 @@ export const Header: React.FC = () => {
     { name: 'About', path: '/about' },
   ];
 
-  // Dynamic header styles
-  const headerBg = isHome && !isScrolled ? 'bg-transparent border-transparent' : 'bg-sand/90 backdrop-blur-sm border-charcoal/5';
-  const textColor = isHome && !isScrolled && !isOpen ? 'text-sand hover:text-white' : 'text-charcoal hover:text-charcoal/70';
-  const logoColor = isHome && !isScrolled && !isOpen ? 'text-sand' : 'text-charcoal';
+  // Dynamic header styles - on mobile home, always use solid background
+  const headerBg = isHome && !isScrolled ? 'bg-transparent md:bg-transparent border-transparent' : 'bg-sand/90 backdrop-blur-sm border-charcoal/5';
+  const textColor = isHome && !isScrolled && !isOpen ? 'text-charcoal md:text-sand hover:text-charcoal/70 md:hover:text-white' : 'text-charcoal hover:text-charcoal/70';
+  const logoColor = isHome && !isScrolled && !isOpen ? 'text-charcoal md:text-sand' : 'text-charcoal';
 
   return (
     <header className={`fixed top-0 left-0 right-0 z-40 transition-all duration-500 border-b ${headerBg}`}>
