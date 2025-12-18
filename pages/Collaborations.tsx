@@ -60,9 +60,9 @@ const ImageSlider: React.FC<ImageSliderProps> = ({ hotelId, defaultImage, title,
       {allImages.length > 1 && (
         <button
           onClick={nextImage}
-          className="absolute right-2 md:right-3 top-1/2 -translate-y-1/2 w-7 h-7 md:w-8 md:h-8 bg-white/80 backdrop-blur rounded-full flex items-center justify-center opacity-60 md:opacity-0 md:group-hover:opacity-100 transition-opacity duration-300 hover:bg-white hover:opacity-100"
+          className="absolute right-2 md:right-4 top-1/2 -translate-y-1/2 flex items-center justify-center opacity-70 md:opacity-0 md:group-hover:opacity-100 transition-opacity duration-300 hover:opacity-100 text-white drop-shadow-lg"
         >
-          <ChevronRight className="w-4 h-4 text-charcoal" />
+          <ChevronRight className="w-6 h-6 md:w-8 md:h-8" />
         </button>
       )}
 
