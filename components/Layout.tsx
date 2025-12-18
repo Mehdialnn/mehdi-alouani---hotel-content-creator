@@ -47,7 +47,7 @@ export const Header: React.FC = () => {
     <header className={`fixed top-0 left-0 right-0 z-40 transition-all duration-500 border-b ${headerBg}`}>
       <div className="px-6 md:px-12 h-24 flex items-center justify-between">
         <NavLink to="/" className={`text-2xl font-serif font-medium tracking-tight transition-colors z-50 relative ${logoColor}`}>
-          Mehdi Alouani
+          Mehdi<span className={`italic ${isHome && !isScrolled && !isOpen ? 'text-charcoal/40 md:text-sand/40' : 'text-charcoal/40'}`}>Alouani</span>
         </NavLink>
 
         {/* Desktop Nav */}

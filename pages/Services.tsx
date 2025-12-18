@@ -157,7 +157,7 @@ const Services: React.FC = () => {
           <Reveal delay={0.2}>
             <div className="mt-8 md:mt-0 max-w-md text-right">
               <p className="text-sm md:text-base font-light leading-relaxed text-charcoal/70">
-                Built for boutique and luxury hotels that care how they look online. <br className="hidden md:block"/>
+                Built for boutique and luxury hotels <br className="hidden md:block"/> that care how they look online. <br className="hidden md:block"/>
                 Transparent deliverables. Simple usage rights. No hidden fees.
               </p>
             </div>

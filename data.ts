@@ -1,4 +1,4 @@
-import { Project, Testimonial, ServicePackage } from './types';
+import { Project, Testimonial } from './types';
 
 export interface PortfolioItem {
   id: string;
@@ -91,11 +91,11 @@ export const projects: Project[] = [
     location: 'Bangkok',
     year: '2024',
     deliverables: ['Interior Photography', 'Detail Studies'],
-    heroImage: '/baantukdin/3.jpg',
+    heroImage: '/baantukdin/8.jpg',
     gallery: [
       '/baantukdin/4.jpg',
       '/baantukdin/6.jpg',
-      '/baantukdin/8.jpg',
+      '/baantukdin/3.jpg',
     ],
     description: 'A masterclass in antique curation and moody lighting in the heart of Bangkok\'s old town.',
     challenge: 'Preserving the deep shadows and rich textures of the antique wood without losing detail.',
@@ -150,10 +150,10 @@ export const projects: Project[] = [
     location: 'Marrakech',
     year: '2022',
     deliverables: ['Social Media Refresh'],
-    heroImage: '/botanica/DSC04531.jpg',
+    heroImage: '/botanica/DSC04626.jpg',
     gallery: [
       '/botanica/DSC04576.jpg',
-      '/botanica/DSC04626.jpg',
+      '/botanica/DSC04531.jpg',
       '/botanica/DSC04697.jpg',
     ],
     description: 'A verdant oasis hidden within the chaotic medina.',
@@ -206,9 +206,9 @@ export const projects: Project[] = [
     deliverables: ['Interior Stills', 'Architecture'],
     heroImage: '/princepark/DSC02798.jpg',
     gallery: [
-      '/princepark/DSC03132.jpg',
-      '/princepark/DSC03143.jpg',
       '/princepark/DSC03153.jpg',
+      '/princepark/DSC03143.jpg',
+      '/princepark/DSC03132.jpg',
     ],
     description: 'Elegant sophistication overlooking Tokyo Tower.',
     challenge: 'Balancing the iconic city views with the refined interior spaces.',
@@ -259,32 +259,5 @@ export const testimonials: Testimonial[] = [
     role: 'Marketing',
     location: 'Tokyo',
     quote: 'The content performed very well and resonated strongly with our audience.',
-  },
-];
-
-export const services: ServicePackage[] = [
-  {
-    title: 'Content Refresh Half Day',
-    description: 'Perfect for updating social media feeds or capturing a specific new menu or room category.',
-    price: 'From $1,500',
-    deliverables: ['20 High-Res Edited Images', '3 Short Form Reels (15s)', '1 Location (Hotel grounds)'],
-    timeline: '3 Days turnaround',
-    rights: 'Social Media & Web (2 Years)',
-  },
-  {
-    title: 'Content Refresh Full Day',
-    description: 'A comprehensive shoot covering rooms, F&B, spa, and lifestyle moments for a fuller library.',
-    price: 'From $2,800',
-    deliverables: ['40 High-Res Edited Images', '5 Short Form Reels', 'Drone Photography (if permitted)'],
-    timeline: '5 Days turnaround',
-    rights: 'Social Media, Web & OTA (3 Years)',
-  },
-  {
-    title: 'Campaign Shoot',
-    description: 'High-production value storytelling for seasonal campaigns, rebranding, or website overhauls.',
-    price: 'From $5,000',
-    deliverables: ['60+ Campaign Assets', '1 Hero Video (60s)', 'Detailed Creative Direction', 'Model Casting Assistance'],
-    timeline: '10 Days turnaround',
-    rights: 'Global Usage (Perpetual)',
   },
 ];

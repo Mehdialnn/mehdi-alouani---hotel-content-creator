@@ -208,7 +208,7 @@ const Collaborations: React.FC = () => {
         <div className="flex flex-col md:flex-row justify-between items-end mb-24 border-b border-charcoal/10 pb-12">
           <Reveal>
             <h1 className="text-6xl md:text-8xl font-serif leading-[0.9] tracking-tight">
-              Visual<br /><span className="italic text-charcoal/50">Diaries</span>
+              Visual <span className="italic text-charcoal/50">Diaries</span>
             </h1>
           </Reveal>
         </div>
