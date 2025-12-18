@@ -11,7 +11,7 @@ const About: React.FC = () => {
           <div className="md:col-span-5">
              <Reveal>
                <div className="aspect-[3/4] bg-stone-200 overflow-hidden">
-                 <img src='/public/DSC03121.jpg' alt="Mehdi Alouani" className="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-1000" />
+                 <img src='/DSC03121.JPG' alt="Mehdi Alouani" className="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-1000" />
                </div>
              </Reveal>
           </div>

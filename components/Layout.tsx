@@ -113,12 +113,13 @@ export const Footer: React.FC = () => (
          <h2 className="text-5xl md:text-7xl lg:text-8xl font-serif leading-[0.9] mb-12">
            Let's plan your <span className="italic text-stone-400">next shoot</span>.
          </h2>
-         <a 
-           href="mailto:hello@mehdi-alouani.com" 
+         <a
+           href="mailto:hello@mehdi-alouani.com"
            className="inline-block text-xl md:text-2xl border-b border-sand/30 pb-1 hover:text-stone-300 hover:border-sand transition-all duration-300"
          >
            hello@mehdi-alouani.com
          </a>
+         <p className="text-sm text-sand/40 mt-3">Typically replying within 24 hours</p>
       </div>
 
       <div className="lg:col-span-3 lg:col-start-7 space-y-12">
@@ -146,7 +147,7 @@ export const Footer: React.FC = () => (
     <div className="flex flex-col md:flex-row justify-between items-end border-t border-white/10 pt-8 text-[10px] uppercase tracking-widest text-sand/40">
       <div className="flex flex-col gap-2">
         <span>© {new Date().getFullYear()} Mehdi Alouani</span>
-        <span>Bangkok, Thailand</span>
+        <span>Paris, France</span>
       </div>
       <div className="mt-8 md:mt-0 flex gap-8">
         <a href="#" className="hover:text-sand">Privacy</a>

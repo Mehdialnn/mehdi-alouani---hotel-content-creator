@@ -126,7 +126,7 @@ const Home: React.FC = () => {
               Hotel photography & content, focused on atmosphere.
             </p>
             <p className="text-sm md:text-base font-light leading-7 text-charcoal/60 max-w-sm mt-3">
-              Capturing the silence of heritage hotels, the texture of design, and the dignity of service — to support direct bookings and brand perception.
+              Capturing the silence of heritage hotels, the texture of design, and the dignity of service — to drive direct bookings and elevate brand perception.
             </p>
           </Reveal>
 
