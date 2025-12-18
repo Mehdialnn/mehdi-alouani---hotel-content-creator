@@ -18,19 +18,16 @@ const ImageSlider: React.FC<ImageSliderProps> = ({ hotelId, defaultImage, title,
   const [currentIndex, setCurrentIndex] = useState(0);
 
   // Find the project that matches this hotel to get all its images
-  // Use more specific matching to avoid conflicts (e.g., "Riad Botanica" vs "Riad Kheirredine")
   const project = projects.find(p => {
     const projectName = p.name.toLowerCase();
     const cardTitle = title.toLowerCase();
-    // Exact match or full name contained
-    return projectName === cardTitle ||
-           projectName.includes(cardTitle) ||
-           cardTitle.includes(projectName);
+    return projectName === cardTitle;
   });
 
-  // Build array of all images for this hotel
+  // Build array of all images - start with the defaultImage from the grid, then add project gallery
+  // This ensures each card shows its unique default image first
   const allImages = project
-    ? [project.heroImage, ...project.gallery]
+    ? [defaultImage, ...project.gallery.filter(img => img !== defaultImage)]
     : [defaultImage];
 
   const nextImage = (e: React.MouseEvent) => {
@@ -229,7 +226,7 @@ const Collaborations: React.FC = () => {
         </div>
 
         {/* Footer / Contact */}
-        <div className="mt-32 border-t border-charcoal/10 pt-20 text-center">
+        <div className="mt-16 md:mt-32 border-t border-charcoal/10 pt-12 md:pt-20 text-center">
           <Reveal>
             <h2 className="text-3xl md:text-5xl font-serif mb-8">Ready to create?</h2>
             <div className="flex justify-center gap-6">

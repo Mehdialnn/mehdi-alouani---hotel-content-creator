@@ -1,9 +1,11 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useLocation } from 'react-router-dom';
 import { Reveal, Button } from '../components/UI';
 
 const About: React.FC = () => {
   const location = useLocation();
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [isSubmitted, setIsSubmitted] = useState(false);
 
   useEffect(() => {
     if (location.hash === '#contact-form') {
@@ -15,6 +17,33 @@ const About: React.FC = () => {
       }, 100);
     }
   }, [location]);
+
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    setIsSubmitting(true);
+
+    const form = e.currentTarget;
+    const formData = new FormData(form);
+
+    try {
+      const response = await fetch('https://formspree.io/f/mojaanyy', {
+        method: 'POST',
+        body: formData,
+        headers: {
+          'Accept': 'application/json'
+        }
+      });
+
+      if (response.ok) {
+        setIsSubmitted(true);
+        form.reset();
+      }
+    } catch (error) {
+      console.error('Form submission error:', error);
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
 
   return (
     <main className="min-h-screen pt-32 pb-20">
@@ -87,51 +116,60 @@ const About: React.FC = () => {
 
           <div id="contact-form" className="bg-white p-8 md:p-12 shadow-sm border border-charcoal/5">
             <Reveal delay={0.3}>
-              <form className="space-y-8">
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+              {isSubmitted ? (
+                <div className="text-center py-12">
+                  <h3 className="text-2xl font-serif text-charcoal mb-4">Thank you!</h3>
+                  <p className="text-charcoal/60">Your message has been sent. I'll get back to you within 24 hours.</p>
+                </div>
+              ) : (
+                <form onSubmit={handleSubmit} className="space-y-8">
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+                    <div className="space-y-2">
+                      <label htmlFor="name" className="text-[10px] uppercase tracking-widest font-bold">Name</label>
+                      <input type="text" id="name" name="name" required className="w-full border-b border-charcoal/20 py-2 focus:outline-none focus:border-gold transition-colors bg-transparent text-sm" placeholder="John Doe" />
+                    </div>
+                    <div className="space-y-2">
+                      <label htmlFor="email" className="text-[10px] uppercase tracking-widest font-bold">Email</label>
+                      <input type="email" id="email" name="email" required className="w-full border-b border-charcoal/20 py-2 focus:outline-none focus:border-gold transition-colors bg-transparent text-sm" placeholder="john@hotel.com" />
+                    </div>
+                  </div>
+
                   <div className="space-y-2">
-                    <label htmlFor="name" className="text-[10px] uppercase tracking-widest font-bold">Name</label>
-                    <input type="text" id="name" className="w-full border-b border-charcoal/20 py-2 focus:outline-none focus:border-gold transition-colors bg-transparent text-sm" placeholder="John Doe" />
+                    <label htmlFor="hotel" className="text-[10px] uppercase tracking-widest font-bold">Hotel / Brand</label>
+                    <input type="text" id="hotel" name="hotel" className="w-full border-b border-charcoal/20 py-2 focus:outline-none focus:border-gold transition-colors bg-transparent text-sm" placeholder="The Grand Hotel" />
                   </div>
+
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+                     <div className="space-y-2">
+                      <label htmlFor="dates" className="text-[10px] uppercase tracking-widest font-bold">Desired Dates</label>
+                      <input type="text" id="dates" name="dates" className="w-full border-b border-charcoal/20 py-2 focus:outline-none focus:border-gold transition-colors bg-transparent text-sm" placeholder="October 2024" />
+                    </div>
+                    <div className="space-y-2">
+                      <label htmlFor="budget" className="text-[10px] uppercase tracking-widest font-bold">Budget Range</label>
+                      <select id="budget" name="budget" className="w-full border-b border-charcoal/20 py-2 focus:outline-none focus:border-gold transition-colors bg-transparent text-sm">
+                        <option>Half Day — From €450</option>
+                        <option>Full Day — From €750</option>
+                        <option>Campaign — Custom</option>
+                      </select>
+                    </div>
+                  </div>
+
                   <div className="space-y-2">
-                    <label htmlFor="email" className="text-[10px] uppercase tracking-widest font-bold">Email</label>
-                    <input type="email" id="email" className="w-full border-b border-charcoal/20 py-2 focus:outline-none focus:border-gold transition-colors bg-transparent text-sm" placeholder="john@hotel.com" />
+                    <label htmlFor="message" className="text-[10px] uppercase tracking-widest font-bold">Project Goals</label>
+                    <textarea id="message" name="message" rows={4} className="w-full border-b border-charcoal/20 py-2 focus:outline-none focus:border-gold transition-colors bg-transparent text-sm" placeholder="Tell me about what you need..."></textarea>
                   </div>
-                </div>
 
-                <div className="space-y-2">
-                  <label htmlFor="hotel" className="text-[10px] uppercase tracking-widest font-bold">Hotel / Brand</label>
-                  <input type="text" id="hotel" className="w-full border-b border-charcoal/20 py-2 focus:outline-none focus:border-gold transition-colors bg-transparent text-sm" placeholder="The Grand Hotel" />
-                </div>
-
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-                   <div className="space-y-2">
-                    <label htmlFor="dates" className="text-[10px] uppercase tracking-widest font-bold">Desired Dates</label>
-                    <input type="text" id="dates" className="w-full border-b border-charcoal/20 py-2 focus:outline-none focus:border-gold transition-colors bg-transparent text-sm" placeholder="October 2024" />
+                  <div className="pt-4">
+                     <Button className="w-full justify-center" disabled={isSubmitting}>
+                       {isSubmitting ? 'Sending...' : 'Send Request'}
+                     </Button>
                   </div>
-                  <div className="space-y-2">
-                    <label htmlFor="budget" className="text-[10px] uppercase tracking-widest font-bold">Budget Range</label>
-                    <select id="budget" className="w-full border-b border-charcoal/20 py-2 focus:outline-none focus:border-gold transition-colors bg-transparent text-sm">
-                      <option>Half Day — From €450</option>
-                      <option>Full Day — From €750</option>
-                      <option>Campaign — Custom</option>
-                    </select>
-                  </div>
-                </div>
 
-                <div className="space-y-2">
-                  <label htmlFor="message" className="text-[10px] uppercase tracking-widest font-bold">Project Goals</label>
-                  <textarea id="message" rows={4} className="w-full border-b border-charcoal/20 py-2 focus:outline-none focus:border-gold transition-colors bg-transparent text-sm" placeholder="Tell me about what you need..."></textarea>
-                </div>
-
-                <div className="pt-4">
-                   <Button className="w-full justify-center">Send Request</Button>
-                </div>
-                
-                <p className="text-[10px] text-charcoal/40 text-center">
-                  Typically respond within 24 hours.
-                </p>
-              </form>
+                  <p className="text-[10px] text-charcoal/40 text-center">
+                    Typically respond within 24 hours.
+                  </p>
+                </form>
+              )}
             </Reveal>
           </div>
 
