@@ -102,7 +102,7 @@ const SimpleCarousel = () => {
 
 const Home: React.FC = () => {
   return (
-    <main className="h-screen w-screen overflow-hidden bg-sand text-charcoal flex flex-col md:flex-row">
+    <main className="h-screen w-screen overflow-hidden bg-sand text-charcoal flex flex-col-reverse md:flex-row">
       
       {/* LEFT PANEL: Static Info (40% width) */}
       <aside className="w-full md:w-[40%] lg:w-[35%] h-[55%] md:h-full flex flex-col justify-between p-6 md:p-12 lg:p-16 border-r border-charcoal/5 relative z-10 bg-sand">
