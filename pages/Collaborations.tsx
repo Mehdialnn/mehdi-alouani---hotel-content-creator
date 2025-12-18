@@ -2,7 +2,7 @@ import React, { useMemo, useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { portfolioGrid, testimonials, projects } from '../data';
 import { Reveal } from '../components/UI';
-import { ArrowUpRight, ChevronLeft, ChevronRight } from 'lucide-react';
+import { ArrowUpRight, ChevronRight } from 'lucide-react';
 
 // --- TYPES ---
 interface ImageSliderProps {
@@ -38,11 +38,6 @@ const ImageSlider: React.FC<ImageSliderProps> = ({ hotelId, defaultImage, title,
     setCurrentIndex((prev) => (prev + 1) % allImages.length);
   };
 
-  const prevImage = (e: React.MouseEvent) => {
-    e.stopPropagation();
-    setCurrentIndex((prev) => (prev - 1 + allImages.length) % allImages.length);
-  };
-
   return (
     <div className={`relative group overflow-hidden ${isTall ? 'h-full min-h-[300px] md:min-h-full' : 'aspect-[4/5] md:aspect-[3/4]'}`}>
       <AnimatePresence mode="wait">
@@ -61,41 +56,23 @@ const ImageSlider: React.FC<ImageSliderProps> = ({ hotelId, defaultImage, title,
       {/* Hover overlay */}
       <div className="absolute inset-0 bg-black/20 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
 
-      {/* Navigation arrows - only show if more than 1 image, hidden on mobile */}
+      {/* Single arrow on right - loops through images */}
       {allImages.length > 1 && (
-        <>
-          <button
-            onClick={prevImage}
-            className="absolute left-2 md:left-3 top-1/2 -translate-y-1/2 w-6 h-6 md:w-8 md:h-8 bg-white/90 backdrop-blur rounded-full hidden md:flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 hover:bg-white"
-          >
-            <ChevronLeft className="w-3 h-3 md:w-4 md:h-4 text-charcoal" />
-          </button>
-          <button
-            onClick={nextImage}
-            className="absolute right-2 md:right-3 top-1/2 -translate-y-1/2 w-6 h-6 md:w-8 md:h-8 bg-white/90 backdrop-blur rounded-full hidden md:flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 hover:bg-white"
-          >
-            <ChevronRight className="w-3 h-3 md:w-4 md:h-4 text-charcoal" />
-          </button>
-
-          {/* Image counter dots - hidden on mobile */}
-          <div className="absolute bottom-10 md:bottom-14 left-1/2 -translate-x-1/2 hidden md:flex gap-1.5 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-            {allImages.map((_, idx) => (
-              <div
-                key={idx}
-                className={`w-1.5 h-1.5 rounded-full transition-colors ${idx === currentIndex ? 'bg-white' : 'bg-white/40'}`}
-              />
-            ))}
-          </div>
-        </>
+        <button
+          onClick={nextImage}
+          className="absolute right-2 md:right-3 top-1/2 -translate-y-1/2 w-7 h-7 md:w-8 md:h-8 bg-white/80 backdrop-blur rounded-full flex items-center justify-center opacity-60 md:opacity-0 md:group-hover:opacity-100 transition-opacity duration-300 hover:bg-white hover:opacity-100"
+        >
+          <ChevronRight className="w-4 h-4 text-charcoal" />
+        </button>
       )}
 
-      {/* Hotel info overlay - hidden on mobile, visible on hover for desktop */}
-      <div className={`absolute bottom-3 md:bottom-6 left-3 md:left-6 right-3 md:right-6 translate-y-4 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-500 hidden md:flex justify-between items-end text-white`}>
+      {/* Hotel info overlay - always visible on mobile (smaller), hover on desktop */}
+      <div className={`absolute bottom-2 md:bottom-6 left-2 md:left-6 right-10 md:right-6 md:translate-y-4 md:opacity-0 md:group-hover:translate-y-0 md:group-hover:opacity-100 transition-all duration-500 flex justify-between items-end text-white`}>
         <div>
-          <h3 className={`font-serif ${isTall ? 'text-xl md:text-3xl' : 'text-base md:text-2xl'} italic`}>{title}</h3>
-          <p className="text-[8px] md:text-[10px] uppercase tracking-widest opacity-80 mt-1">{location}</p>
+          <h3 className={`font-serif ${isTall ? 'text-sm md:text-3xl' : 'text-xs md:text-2xl'} italic`}>{title}</h3>
+          <p className="text-[7px] md:text-[10px] uppercase tracking-widest opacity-70 md:opacity-80 mt-0.5 md:mt-1">{location}</p>
         </div>
-        <ArrowUpRight className={`${isTall ? 'w-4 h-4 md:w-5 md:h-5' : 'w-3 h-3 md:w-4 md:h-4'}`} />
+        <ArrowUpRight className={`hidden md:block ${isTall ? 'w-5 h-5' : 'w-4 h-4'}`} />
       </div>
     </div>
   );

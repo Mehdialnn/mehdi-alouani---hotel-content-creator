@@ -102,10 +102,10 @@ const SimpleCarousel = () => {
 
 const Home: React.FC = () => {
   return (
-    <main className="h-screen w-screen overflow-hidden bg-sand text-charcoal flex flex-col-reverse md:flex-row">
+    <main className="h-screen w-screen overflow-hidden bg-sand text-charcoal flex flex-col md:flex-row">
       
       {/* LEFT PANEL: Static Info (40% width) */}
-      <aside className="w-full md:w-[40%] lg:w-[35%] h-[45%] md:h-full flex flex-col justify-between p-6 md:p-12 lg:p-16 border-r border-charcoal/5 relative z-10 bg-sand">
+      <aside className="w-full md:w-[40%] lg:w-[35%] h-[55%] md:h-full flex flex-col justify-between p-6 md:p-12 lg:p-16 border-r border-charcoal/5 relative z-10 bg-sand">
         
         {/* Header / Logo */}
         <div>
@@ -165,7 +165,7 @@ const Home: React.FC = () => {
       </aside>
 
       {/* RIGHT PANEL: Side-by-Side Portrait Carousel (60% width) */}
-      <section className="w-full md:w-[60%] lg:w-[65%] h-[55%] md:h-full relative bg-charcoal">
+      <section className="w-full md:w-[60%] lg:w-[65%] h-[45%] md:h-full relative bg-charcoal">
         <SimpleCarousel />
         
         {/* Optional: Simple Overlay Text on the Carousel side? 
