@@ -84,7 +84,7 @@ const ServiceRow: React.FC<PackageProps> = ({ title, price, description, feature
           </div>
           
           <div className="hidden md:block mt-8">
-            <Link to="/contact" className="inline-flex items-center gap-2 text-xs uppercase tracking-[0.2em] font-medium opacity-40 group-hover:opacity-100 transition-opacity">
+            <Link to="/about#contact-form" className="inline-flex items-center gap-2 text-xs uppercase tracking-[0.2em] font-medium opacity-40 group-hover:opacity-100 transition-opacity">
               Book This <ArrowRight className="w-3 h-3" />
             </Link>
           </div>
@@ -130,7 +130,7 @@ const ServiceRow: React.FC<PackageProps> = ({ title, price, description, feature
 
           {/* Mobile CTA */}
           <div className="md:hidden">
-             <Button variant="outline" to="/contact" className="w-full">Request Availability</Button>
+             <Button variant="outline" to="/about#contact-form" className="w-full">Request Availability</Button>
           </div>
         </div>
 
@@ -208,7 +208,7 @@ const Services: React.FC = () => {
         <div className="mt-32 text-center">
           <Reveal>
              <h2 className="text-3xl md:text-5xl font-serif mb-8">Not sure what you need?</h2>
-             <Button to="/contact" variant="primary">Discuss your project</Button>
+             <Button to="/about#contact-form" variant="primary">Discuss your project</Button>
           </Reveal>
         </div>
 

@@ -1,7 +1,21 @@
-import React from 'react';
+import React, { useEffect } from 'react';
+import { useLocation } from 'react-router-dom';
 import { Reveal, Button } from '../components/UI';
 
 const About: React.FC = () => {
+  const location = useLocation();
+
+  useEffect(() => {
+    if (location.hash === '#contact-form') {
+      setTimeout(() => {
+        const element = document.getElementById('contact-form');
+        if (element) {
+          element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+      }, 100);
+    }
+  }, [location]);
+
   return (
     <main className="min-h-screen pt-32 pb-20">
       <div className="max-w-7xl mx-auto px-6">
@@ -41,7 +55,7 @@ const About: React.FC = () => {
                  </div>
                  <div>
                    <span className="block font-bold mb-2">Direct Contact</span>
-                   hello@mehdi-alouani.com
+                   mehdialouanipro@gmail.com
                  </div>
               </div>
             </Reveal>
@@ -61,8 +75,8 @@ const About: React.FC = () => {
               </p>
 
               <div className="space-y-6">
-                <a href="mailto:hello@mehdi-alouani.com" className="block text-xl hover:text-gold transition-colors font-serif border-b border-charcoal/10 pb-4">
-                  hello@mehdi-alouani.com
+                <a href="mailto:mehdialouanipro@gmail.com" className="block text-xl hover:text-gold transition-colors font-serif border-b border-charcoal/10 pb-4">
+                  mehdialouanipro@gmail.com
                 </a>
                 <a href="https://instagram.com/mehdixaln" target="_blank" rel="noopener noreferrer" className="block text-xl hover:text-gold transition-colors font-serif border-b border-charcoal/10 pb-4">
                   @mehdixaln
@@ -71,7 +85,7 @@ const About: React.FC = () => {
             </Reveal>
           </div>
 
-          <div className="bg-white p-8 md:p-12 shadow-sm border border-charcoal/5">
+          <div id="contact-form" className="bg-white p-8 md:p-12 shadow-sm border border-charcoal/5">
             <Reveal delay={0.3}>
               <form className="space-y-8">
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
@@ -98,10 +112,9 @@ const About: React.FC = () => {
                   <div className="space-y-2">
                     <label htmlFor="budget" className="text-[10px] uppercase tracking-widest font-bold">Budget Range</label>
                     <select id="budget" className="w-full border-b border-charcoal/20 py-2 focus:outline-none focus:border-gold transition-colors bg-transparent text-sm">
-                      <option>$1.5k - $3k</option>
-                      <option>$3k - $5k</option>
-                      <option>$5k - $10k</option>
-                      <option>$10k+</option>
+                      <option>Half Day — From €450</option>
+                      <option>Full Day — From €750</option>
+                      <option>Campaign — Custom</option>
                     </select>
                   </div>
                 </div>

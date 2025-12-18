@@ -19,7 +19,7 @@ const App: React.FC = () => {
   return (
     <Router>
       <ScrollToTop />
-      <div className="bg-sand min-h-screen text-charcoal font-sans selection:bg-gold/30">
+      <div className="bg-sand min-h-screen text-charcoal font-sans selection:bg-gold/30 overflow-x-hidden">
         <GrainOverlay />
         <Header />
         

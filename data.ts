@@ -25,7 +25,7 @@ export const portfolioGrid: PortfolioItem[] = [
   },
   {
     id: 'botanica-1',
-    image: '/botanica/DSC04576.jpg',
+    image: '/botanica/DSC04531.jpg',
     title: 'Riad Botanica',
     location: 'Marrakech',
     size: 'tall',

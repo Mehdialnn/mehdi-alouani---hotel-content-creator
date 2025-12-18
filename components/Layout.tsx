@@ -114,10 +114,10 @@ export const Footer: React.FC = () => (
            Let's plan your <span className="italic text-stone-400">next shoot</span>.
          </h2>
          <a
-           href="mailto:hello@mehdi-alouani.com"
+           href="mailto:mehdialouanipro@gmail.com"
            className="inline-block text-xl md:text-2xl border-b border-sand/30 pb-1 hover:text-stone-300 hover:border-sand transition-all duration-300"
          >
-           hello@mehdi-alouani.com
+           mehdialouanipro@gmail.com
          </a>
          <p className="text-sm text-sand/40 mt-3">Typically replying within 24 hours</p>
       </div>

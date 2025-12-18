@@ -1,5 +1,5 @@
 import React, { useMemo, useState } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
+import { motion } from 'framer-motion';
 import { portfolioGrid, testimonials, projects } from '../data';
 import { Reveal } from '../components/UI';
 import { ArrowUpRight, ChevronRight } from 'lucide-react';
@@ -40,18 +40,12 @@ const ImageSlider: React.FC<ImageSliderProps> = ({ hotelId, defaultImage, title,
 
   return (
     <div className={`relative group overflow-hidden ${isTall ? 'h-full min-h-[300px] md:min-h-full' : 'aspect-[4/5] md:aspect-[3/4]'}`}>
-      <AnimatePresence mode="wait">
-        <motion.img
-          key={currentIndex}
-          src={allImages[currentIndex]}
-          alt={title}
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          exit={{ opacity: 0 }}
-          transition={{ duration: 0.3 }}
-          className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
-        />
-      </AnimatePresence>
+      <img
+        src={allImages[currentIndex]}
+        alt={title}
+        className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+        loading="lazy"
+      />
 
       {/* Hover overlay */}
       <div className="absolute inset-0 bg-black/20 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
@@ -239,7 +233,7 @@ const Collaborations: React.FC = () => {
           <Reveal>
             <h2 className="text-3xl md:text-5xl font-serif mb-8">Ready to create?</h2>
             <div className="flex justify-center gap-6">
-              <a href="mailto:hello@mehdi.com" className="group flex items-center gap-2 text-sm uppercase tracking-widest hover:text-charcoal/60 transition-colors">
+              <a href="mailto:mehdialouanipro@gmail.com" className="group flex items-center gap-2 text-sm uppercase tracking-widest hover:text-charcoal/60 transition-colors">
                 Email Me <ArrowUpRight className="w-4 h-4 group-hover:-mt-1 group-hover:ml-1 transition-all" />
               </a>
               <span className="text-charcoal/20">|</span>
