@@ -17,6 +17,13 @@ export interface PortfolioItem {
 export const portfolioGrid: PortfolioItem[] = [
   // Block 1: Small, Small, BIG (Telegraphenamt DSC04339)
   {
+    id: 'the-retreat-1',
+    image: '/theretreat/1.jpg',
+    title: 'The Retreat',
+    location: 'Koh Chang',
+    size: 'tall',
+  },
+  {
     id: 'baan-tuk-din-1',
     image: '/baantukdin/8.jpg',
     title: 'Baan Tuk Din',
@@ -84,6 +91,24 @@ export const portfolioGrid: PortfolioItem[] = [
 ];
 
 export const projects: Project[] = [
+  {
+    id: 'the-retreat',
+    name: 'The Retreat',
+    category: 'Resort',
+    location: 'Koh Chang',
+    year: '2026',
+    deliverables: ['Interior Photography', 'Lifestyle'],
+    heroImage: '/theretreat/1.jpg',
+    gallery: [
+      '/theretreat/4.jpg',
+      '/theretreat/5.jpg',
+      '/theretreat/8.jpg',
+    ],
+    description: 'A serene escape nestled in the tropical paradise of Koh Samui.',
+    challenge: 'Capturing the tranquil atmosphere and seamless indoor-outdoor living.',
+    approach: 'Emphasizing natural light and the lush surroundings to convey a sense of peaceful retreat.',
+    result: 'A visual story that embodies relaxation and tropical luxury.',
+  },
   {
     id: 'baan-tuk-din',
     name: 'Baan Tuk Din',
