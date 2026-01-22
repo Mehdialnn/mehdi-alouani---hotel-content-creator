@@ -32,7 +32,7 @@ export const portfolioGrid: PortfolioItem[] = [
   },
   {
     id: 'botanica-1',
-    image: '/botanica/DSC04531.jpg',
+    image: '/botanica/DSC04626.jpg',
     title: 'Riad Botanica',
     location: 'Marrakech',
     size: 'tall',
@@ -78,13 +78,6 @@ export const portfolioGrid: PortfolioItem[] = [
     id: 'kheirredine-1',
     image: '/kherredine/DSC01676.jpg',
     title: 'Riad Kheirredine',
-    location: 'Marrakech',
-    size: 'tall',
-  },
-  {
-    id: 'botanica-2',
-    image: '/botanica/DSC04626.jpg',
-    title: 'Riad Botanica',
     location: 'Marrakech',
     size: 'tall',
   },
