@@ -24,10 +24,10 @@ export const portfolioGrid: PortfolioItem[] = [
     size: 'tall',
   },
   {
-    id: 'baan-tuk-din-1',
-    image: '/baantukdin/8.jpg',
-    title: 'Baan Tuk Din',
-    location: 'Bangkok',
+    id: 'the-dolli-1',
+    image: '/thedolli/1.jpg',
+    title: 'The Dolli at Acropolis',
+    location: 'Athens',
     size: 'tall',
   },
   {
@@ -82,10 +82,10 @@ export const portfolioGrid: PortfolioItem[] = [
     size: 'tall',
   },
   {
-    id: 'the-dolli-1',
-    image: '/thedolli/1.jpg',
-    title: 'The Dolli at Acropolis',
-    location: 'Athens',
+    id: 'baan-tuk-din-1',
+    image: '/baantukdin/8.jpg',
+    title: 'Baan Tuk Din',
+    location: 'Bangkok',
     size: 'tall',
   },
   {
