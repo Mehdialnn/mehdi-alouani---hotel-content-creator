@@ -81,6 +81,20 @@ export const portfolioGrid: PortfolioItem[] = [
     location: 'Marrakech',
     size: 'tall',
   },
+  {
+    id: 'the-dolli-1',
+    image: '/thedolli/1.jpg',
+    title: 'The Dolli at Acropolis',
+    location: 'Athens',
+    size: 'tall',
+  },
+  {
+    id: '91-athens-riviera-1',
+    image: '/91athensriviera/1.jpg',
+    title: '91 Athens Riviera',
+    location: 'Athens',
+    size: 'tall',
+  },
 ];
 
 export const projects: Project[] = [
@@ -250,6 +264,42 @@ export const projects: Project[] = [
     challenge: 'Highlighting the intricate zellige tilework and carved plaster details.',
     approach: 'Using soft, diffused light to reveal the textures and patterns of traditional artisanship.',
     result: 'A comprehensive visual library showcasing the riad\'s authentic character.',
+  },
+  {
+    id: 'the-dolli',
+    name: 'The Dolli at Acropolis',
+    category: 'Boutique',
+    location: 'Athens',
+    year: '2026',
+    deliverables: ['Interior Photography', 'Lifestyle'],
+    heroImage: '/thedolli/1.jpg',
+    gallery: [
+      '/thedolli/3.jpg',
+      '/thedolli/8.jpg',
+      '/thedolli/10.jpg',
+    ],
+    description: 'A refined boutique retreat in the shadow of the Acropolis.',
+    challenge: 'Conveying the dialogue between ancient surroundings and contemporary design.',
+    approach: 'Using the Athenian light to bridge the classical and the modern throughout the interiors.',
+    result: 'A visual narrative that positions the hotel as a cultural destination in its own right.',
+  },
+  {
+    id: '91-athens-riviera',
+    name: '91 Athens Riviera',
+    category: 'Resort',
+    location: 'Athens',
+    year: '2026',
+    deliverables: ['Interior Photography', 'Architecture'],
+    heroImage: '/91athensriviera/1.jpg',
+    gallery: [
+      '/91athensriviera/2.jpg',
+      '/91athensriviera/4.jpg',
+      '/91athensriviera/5.jpg',
+    ],
+    description: 'Coastal elegance along the Athenian Riviera.',
+    challenge: 'Capturing the seamless transition between the Mediterranean landscape and sleek interiors.',
+    approach: 'Working with the coastal light and sea views to emphasize the property\'s connection to the water.',
+    result: 'A fresh visual identity celebrating the Riviera lifestyle.',
   },
 ];
 
