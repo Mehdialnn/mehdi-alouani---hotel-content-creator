@@ -230,7 +230,7 @@ const Collaborations: React.FC = () => {
           <Reveal>
             <h2 className="text-3xl md:text-5xl font-serif mb-8">Ready to create?</h2>
             <div className="flex justify-center gap-6">
-              <a href="mailto:mehdialouanipro@gmail.com" className="group flex items-center gap-2 text-sm uppercase tracking-widest hover:text-charcoal/60 transition-colors">
+              <a href="mailto:hello@mavisuals.co" className="group flex items-center gap-2 text-sm uppercase tracking-widest hover:text-charcoal/60 transition-colors">
                 Email Me <ArrowUpRight className="w-4 h-4 group-hover:-mt-1 group-hover:ml-1 transition-all" />
               </a>
               <span className="text-charcoal/20">|</span>

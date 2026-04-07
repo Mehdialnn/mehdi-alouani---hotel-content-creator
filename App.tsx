@@ -6,6 +6,7 @@ import Collaborations from './pages/Collaborations';
 import ProjectDetail from './pages/ProjectDetail';
 import Services from './pages/Services';
 import About from './pages/About';
+import Contact from './pages/Contact';
 
 const ScrollToTop = () => {
   const { pathname } = useLocation();
@@ -30,7 +31,7 @@ const App: React.FC = () => {
           <Route path="/collaborations/:id" element={<ProjectDetail />} />
           <Route path="/services" element={<Services />} />
           <Route path="/about" element={<About />} />
-          <Route path="/contact" element={<About />} /> {/* Redirect/Alias */}
+          <Route path="/contact" element={<Contact />} />
         </Routes>
 
         <Footer />
