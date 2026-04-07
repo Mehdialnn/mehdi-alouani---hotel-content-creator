@@ -101,6 +101,7 @@ const SimpleCarousel = () => {
 };
 
 const Home: React.FC = () => {
+  const [logoHovered, setLogoHovered] = useState(false);
   return (
     <main className="h-screen w-screen overflow-hidden bg-sand text-charcoal flex flex-col-reverse md:flex-row">
       
@@ -110,8 +111,57 @@ const Home: React.FC = () => {
         {/* Header / Logo */}
         <div>
           <Reveal>
-            <h1 className="text-5xl md:text-6xl font-serif font-medium tracking-tighter leading-none mb-2">
-              Mehdi<span className="text-charcoal/40 italic">Alouani</span>
+            <h1
+              className="text-5xl md:text-6xl font-serif font-medium tracking-tighter leading-none mb-2 flex items-baseline overflow-hidden cursor-default"
+              onMouseEnter={() => setLogoHovered(true)}
+              onMouseLeave={() => setLogoHovered(false)}
+            >
+              {/* M */}
+              <span>M</span>
+
+              {/* "ehdi" slides in on hover */}
+              <motion.span
+                animate={{ width: logoHovered ? 'auto' : 0, opacity: logoHovered ? 1 : 0 }}
+                transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
+                className="overflow-hidden inline-block whitespace-nowrap"
+              >
+                ehdi
+              </motion.span>
+
+              {/* A - always muted grey */}
+              <span className="text-charcoal/40">A</span>
+
+              {/* "louani" slides in on hover, italic muted */}
+              <motion.span
+                animate={{ width: logoHovered ? 'auto' : 0, opacity: logoHovered ? 1 : 0 }}
+                transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
+                className="overflow-hidden inline-block whitespace-nowrap italic text-charcoal/40"
+              >
+                louani
+              </motion.span>
+
+              {/* "Visuals" slides out on hover — top half full color, bottom half muted */}
+              <motion.span
+                animate={{ width: logoHovered ? 0 : 'auto', opacity: logoHovered ? 0 : 1 }}
+                transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
+                className="overflow-hidden inline-block whitespace-nowrap italic relative"
+              >
+                <span className="relative inline-block">
+                  <span
+                    aria-hidden="true"
+                    className="absolute inset-0 italic text-charcoal"
+                    style={{ clipPath: 'inset(0 0 50% 0)' }}
+                  >
+                    &nbsp;Visuals
+                  </span>
+                  <span
+                    className="italic text-charcoal/40"
+                    style={{ clipPath: 'inset(50% 0 0 0)' }}
+                  >
+                    &nbsp;Visuals
+                  </span>
+                </span>
+              </motion.span>
             </h1>
             <p className="text-[10px] uppercase tracking-[0.3em] text-charcoal/60 mt-4">
               Paris Based — Working Worldwide
