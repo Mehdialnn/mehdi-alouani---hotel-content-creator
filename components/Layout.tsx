@@ -65,8 +65,8 @@ export const Header: React.FC = () => {
             ehdi
           </motion.span>
 
-          {/* A */}
-          <span>A</span>
+          {/* A - always muted grey */}
+          <span className={isHome && !isScrolled && !isOpen ? 'text-charcoal/40 md:text-sand/40' : 'text-charcoal/40'}>A</span>
 
           {/* "louani" slides in on hover, italic muted */}
           <motion.span
@@ -77,13 +77,29 @@ export const Header: React.FC = () => {
             louani
           </motion.span>
 
-          {/* "Visuals" slides out on hover */}
+          {/* "Visuals" slides out on hover — top half full color, bottom half muted */}
           <motion.span
             animate={{ width: logoHovered ? 0 : 'auto', opacity: logoHovered ? 0 : 1 }}
             transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
-            className={`overflow-hidden inline-block whitespace-nowrap italic ${isHome && !isScrolled && !isOpen ? 'text-charcoal/40 md:text-sand/40' : 'text-charcoal/40'}`}
+            className="overflow-hidden inline-block whitespace-nowrap italic relative"
           >
-            &nbsp;Visuals
+            <span className="relative inline-block">
+              {/* top half */}
+              <span
+                aria-hidden="true"
+                className={`absolute inset-0 italic ${isHome && !isScrolled && !isOpen ? 'text-charcoal md:text-sand' : 'text-charcoal'}`}
+                style={{ clipPath: 'inset(0 0 50% 0)' }}
+              >
+                &nbsp;Visuals
+              </span>
+              {/* bottom half */}
+              <span
+                className={`italic ${isHome && !isScrolled && !isOpen ? 'text-charcoal/40 md:text-sand/40' : 'text-charcoal/40'}`}
+                style={{ clipPath: 'inset(50% 0 0 0)' }}
+              >
+                &nbsp;Visuals
+              </span>
+            </span>
           </motion.span>
         </NavLink>
 
