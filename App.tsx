@@ -4,7 +4,6 @@ import { Header, Footer, GrainOverlay } from './components/Layout';
 import Home from './pages/Home';
 import Collaborations from './pages/Collaborations';
 import ProjectDetail from './pages/ProjectDetail';
-import Services from './pages/Services';
 import About from './pages/About';
 import Contact from './pages/Contact';
 
@@ -29,7 +28,6 @@ const App: React.FC = () => {
           <Route path="/work" element={<Collaborations />} />
           <Route path="/collaborations" element={<Collaborations />} /> {/* Keep for compatibility */}
           <Route path="/collaborations/:id" element={<ProjectDetail />} />
-          <Route path="/services" element={<Services />} />
           <Route path="/about" element={<About />} />
           <Route path="/contact" element={<Contact />} />
         </Routes>

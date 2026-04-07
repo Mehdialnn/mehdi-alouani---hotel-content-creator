@@ -1,7 +1,7 @@
 import React, { useMemo, useState } from 'react';
 import { motion } from 'framer-motion';
 import { portfolioGrid, testimonials, projects } from '../data';
-import { Reveal } from '../components/UI';
+import { Reveal, Button } from '../components/UI';
 import { ArrowUpRight, ChevronRight } from 'lucide-react';
 
 // --- TYPES ---
@@ -228,16 +228,8 @@ const Collaborations: React.FC = () => {
         {/* Footer / Contact */}
         <div className="mt-16 md:mt-32 border-t border-charcoal/10 pt-12 md:pt-20 text-center">
           <Reveal>
-            <h2 className="text-3xl md:text-5xl font-serif mb-8">Ready to create?</h2>
-            <div className="flex justify-center gap-6">
-              <a href="mailto:hello@mavisuals.co" className="group flex items-center gap-2 text-sm uppercase tracking-widest hover:text-charcoal/60 transition-colors">
-                Email Me <ArrowUpRight className="w-4 h-4 group-hover:-mt-1 group-hover:ml-1 transition-all" />
-              </a>
-              <span className="text-charcoal/20">|</span>
-              <a href="#" className="group flex items-center gap-2 text-sm uppercase tracking-widest hover:text-charcoal/60 transition-colors">
-                @mehdixaln <ArrowUpRight className="w-4 h-4 group-hover:-mt-1 group-hover:ml-1 transition-all" />
-              </a>
-            </div>
+            <h2 className="text-3xl md:text-5xl font-serif mb-8">Not sure what you need?</h2>
+            <Button to="/contact" variant="primary">Discuss your project</Button>
           </Reveal>
         </div>
 

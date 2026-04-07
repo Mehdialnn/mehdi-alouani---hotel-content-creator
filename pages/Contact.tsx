@@ -4,6 +4,12 @@ import { motion } from 'framer-motion';
 
 const services = ['Photography', 'Videography', 'Art Direction', 'Full Production'];
 
+const nextMonthPlaceholder = () => {
+  const d = new Date();
+  d.setMonth(d.getMonth() + 1);
+  return d.toLocaleString('en-US', { month: 'long', year: 'numeric' });
+};
+
 const Contact: React.FC = () => {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
@@ -144,17 +150,16 @@ const Contact: React.FC = () => {
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
                   <div className="space-y-2">
                     <label htmlFor="dates" className="text-[10px] uppercase tracking-widest text-charcoal/50">Desired Dates</label>
-                    <input type="text" id="dates" name="dates" className="w-full border-b border-charcoal/20 py-3 focus:outline-none focus:border-charcoal transition-colors bg-transparent text-sm" placeholder="October 2025" />
+                    <input type="text" id="dates" name="dates" className="w-full border-b border-charcoal/20 py-3 focus:outline-none focus:border-charcoal transition-colors bg-transparent text-sm" placeholder={nextMonthPlaceholder()} />
                   </div>
                   <div className="space-y-2">
                     <label htmlFor="budget" className="text-[10px] uppercase tracking-widest text-charcoal/50">Budget Range *</label>
                     <select id="budget" name="budget" required className="w-full border-b border-charcoal/20 py-3 focus:outline-none focus:border-charcoal transition-colors bg-transparent text-sm appearance-none cursor-pointer">
                       <option value="" disabled>Select a range</option>
-                      <option>Up to €3,000</option>
-                      <option>€3,000 – €6,000</option>
-                      <option>€6,000 – €9,000</option>
-                      <option>€9,000 – €12,000</option>
-                      <option>€12,000+</option>
+                      <option>Up to 1 000 €</option>
+                      <option>1 000 – 2 000 €</option>
+                      <option>2 000 – 4 000 €</option>
+                      <option>4 000 €+</option>
                     </select>
                   </div>
                 </div>
