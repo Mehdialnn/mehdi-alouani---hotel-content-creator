@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { NavLink, useLocation } from 'react-router-dom';
-import { Menu, X, ArrowUpRight, Instagram, Mail, Calendar } from 'lucide-react';
+import { Menu, X, ArrowUpRight, Mail } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 
 export const GrainOverlay: React.FC = () => (
@@ -144,14 +144,21 @@ export const Footer: React.FC = () => (
     </div>
 
     <div className="flex flex-col md:flex-row justify-between items-start md:items-end border-t border-white/10 pt-6 md:pt-8 text-[10px] uppercase tracking-widest text-sand/40">
-      <div className="flex flex-col gap-1 md:gap-2">
+      <div className="flex flex-col gap-2">
+        <span>Contact</span>
+        <a href="mailto:mehdialouanipro@gmail.com" className="hover:text-sand transition-colors">mehdialouanipro@gmail.com</a>
+        <div className="flex gap-4 mt-1">
+          <a href="https://instagram.com/mehdixaln" target="_blank" rel="noopener noreferrer" className="hover:text-sand transition-colors">
+            <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect width="20" height="20" x="2" y="2" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" x2="17.51" y1="6.5" y2="6.5"/></svg>
+          </a>
+          <a href="mailto:mehdialouanipro@gmail.com" className="hover:text-sand transition-colors">
+            <Mail className="w-3 h-3" />
+          </a>
+        </div>
+      </div>
+      <div className="mt-4 md:mt-0 flex flex-col gap-1 md:gap-2 md:items-end">
         <span>© {new Date().getFullYear()} Mehdi Alouani</span>
         <span>Paris, France</span>
-      </div>
-      <div className="mt-4 md:mt-0 flex gap-6 md:gap-8">
-        <a href="#" className="hover:text-sand">Privacy</a>
-        <a href="#" className="hover:text-sand">Legal</a>
-        <a href="#" className="hover:text-sand">Credits</a>
       </div>
     </div>
   </footer>
