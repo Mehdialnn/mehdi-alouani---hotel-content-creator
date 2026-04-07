@@ -17,6 +17,7 @@ export const GrainOverlay: React.FC = () => (
 export const Header: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
+  const [logoHovered, setLogoHovered] = useState(false);
   const location = useLocation();
   const isHome = location.pathname === '/';
 
@@ -46,8 +47,44 @@ export const Header: React.FC = () => {
   return (
     <header className={`fixed top-0 left-0 right-0 z-40 transition-all duration-500 border-b ${headerBg}`}>
       <div className="px-6 md:px-12 h-24 flex items-center justify-between">
-        <NavLink to="/" className={`text-2xl font-serif font-medium tracking-tight transition-colors z-50 relative ${logoColor}`}>
-          Mehdi<span className={`italic ${isHome && !isScrolled && !isOpen ? 'text-charcoal/40 md:text-sand/40' : 'text-charcoal/40'}`}>Alouani</span>
+        <NavLink
+          to="/"
+          className={`text-2xl font-serif font-medium tracking-tight transition-colors z-50 relative flex items-baseline overflow-hidden ${logoColor}`}
+          onMouseEnter={() => setLogoHovered(true)}
+          onMouseLeave={() => setLogoHovered(false)}
+        >
+          {/* M */}
+          <span>M</span>
+
+          {/* "ehdi" slides in on hover */}
+          <motion.span
+            animate={{ width: logoHovered ? 'auto' : 0, opacity: logoHovered ? 1 : 0 }}
+            transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
+            className="overflow-hidden inline-block whitespace-nowrap"
+          >
+            ehdi
+          </motion.span>
+
+          {/* A */}
+          <span>A</span>
+
+          {/* "louani" slides in on hover, italic muted */}
+          <motion.span
+            animate={{ width: logoHovered ? 'auto' : 0, opacity: logoHovered ? 1 : 0 }}
+            transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
+            className={`overflow-hidden inline-block whitespace-nowrap italic ${isHome && !isScrolled && !isOpen ? 'text-charcoal/40 md:text-sand/40' : 'text-charcoal/40'}`}
+          >
+            louani
+          </motion.span>
+
+          {/* "Visuals" slides out on hover */}
+          <motion.span
+            animate={{ width: logoHovered ? 0 : 'auto', opacity: logoHovered ? 0 : 1 }}
+            transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
+            className={`overflow-hidden inline-block whitespace-nowrap italic ${isHome && !isScrolled && !isOpen ? 'text-charcoal/40 md:text-sand/40' : 'text-charcoal/40'}`}
+          >
+            &nbsp;Visuals
+          </motion.span>
         </NavLink>
 
         {/* Desktop Nav */}
