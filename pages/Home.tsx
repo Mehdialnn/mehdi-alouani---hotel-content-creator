@@ -192,8 +192,8 @@ const Home: React.FC = () => {
                 View Selected Work
                 <ArrowRight className="w-3 h-3 transition-transform group-hover:translate-x-1" />
               </Link>
-              <Link to="/services" className="group flex items-center gap-3 text-xs uppercase tracking-[0.2em] font-medium text-charcoal/60 hover:text-charcoal transition-all">
-                Services & Starting Rates
+              <Link to="/contact" className="group flex items-center gap-3 text-xs uppercase tracking-[0.2em] font-medium text-charcoal/60 hover:text-charcoal transition-all">
+                Get a Quote
                 <ArrowRight className="w-3 h-3 transition-transform group-hover:translate-x-1" />
               </Link>
             </div>
