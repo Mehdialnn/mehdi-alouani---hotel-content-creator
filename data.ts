@@ -353,4 +353,12 @@ export const testimonials: Testimonial[] = [
     location: 'Tokyo',
     quote: 'The content performed very well and resonated strongly with our audience.',
   },
+  {
+    id: '4',
+    hotel: 'The Dolli at Acropolis',
+    author: 'Resident Manager',
+    role: 'Management',
+    location: 'Athens',
+    quote: 'The team and I truly enjoyed your perspective of the Maison. You captured the atmosphere here beautifully, and we appreciate the care you took in presenting The Dolli to your audience.',
+  },
 ];
