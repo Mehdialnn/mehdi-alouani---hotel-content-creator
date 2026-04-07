@@ -95,6 +95,13 @@ export const portfolioGrid: PortfolioItem[] = [
     location: 'Athens',
     size: 'tall',
   },
+  {
+    id: 'vilafoz-1',
+    image: '/vilafoz/1.jpg',
+    title: 'Vila Foz Hotel',
+    location: 'Porto',
+    size: 'tall',
+  },
 ];
 
 export const projects: Project[] = [
@@ -300,6 +307,24 @@ export const projects: Project[] = [
     challenge: 'Capturing the seamless transition between the Mediterranean landscape and sleek interiors.',
     approach: 'Working with the coastal light and sea views to emphasize the property\'s connection to the water.',
     result: 'A fresh visual identity celebrating the Riviera lifestyle.',
+  },
+  {
+    id: 'vila-foz',
+    name: 'Vila Foz Hotel',
+    category: 'Boutique',
+    location: 'Porto',
+    year: '2026',
+    deliverables: ['Interior Photography', 'Architecture'],
+    heroImage: '/vilafoz/1.jpg',
+    gallery: [
+      '/vilafoz/2.jpg',
+      '/vilafoz/3.jpg',
+      '/vilafoz/4.jpg',
+    ],
+    description: 'A palatial boutique hotel in Porto\'s prestigious Foz do Douro district, where 19th-century grandeur meets contemporary elegance.',
+    challenge: 'Rendering the layered richness of the interiors — ornate ceilings, marble, and curated art — without overwhelming the sense of intimacy.',
+    approach: 'Using the soft Atlantic light flooding through the tall windows to anchor each frame in place and mood.',
+    result: 'A refined visual portfolio that reflects the hotel\'s position as one of Porto\'s finest luxury addresses.',
   },
 ];
 
