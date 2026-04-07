@@ -204,14 +204,6 @@ const Collaborations: React.FC = () => {
     <main className="min-h-screen bg-sand pt-32 px-4 md:px-12 pb-20 text-charcoal">
       <div className="max-w-[1600px] mx-auto">
 
-        {/* Header */}
-        <div className="flex flex-col md:flex-row justify-between items-end mb-12 border-b border-charcoal/10 pb-8">
-          <Reveal>
-            <h1 className="text-4xl md:text-5xl font-serif leading-[0.9] tracking-tight">
-              Visual <span className="italic text-charcoal/50">Diaries</span>
-            </h1>
-          </Reveal>
-        </div>
 
         {/* Staggered Blocks Render Loop */}
         <div className="flex flex-col gap-12">

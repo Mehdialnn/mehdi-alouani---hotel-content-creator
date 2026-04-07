@@ -1,5 +1,5 @@
 import React from 'react';
-import { Reveal } from '../components/UI';
+import { Reveal, Button } from '../components/UI';
 
 const About: React.FC = () => {
   return (
@@ -44,6 +44,13 @@ const About: React.FC = () => {
               </div>
             </Reveal>
           </div>
+        </div>
+
+        <div className="max-w-7xl mx-auto px-6 mt-16 md:mt-32 border-t border-charcoal/10 pt-12 md:pt-20 text-center">
+          <Reveal>
+            <h2 className="text-3xl md:text-5xl font-serif mb-8">Ready to work together?</h2>
+            <Button to="/contact" variant="primary">Start a project</Button>
+          </Reveal>
         </div>
       </div>
     </main>
