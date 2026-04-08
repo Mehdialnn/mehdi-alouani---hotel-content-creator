@@ -21,7 +21,7 @@ const About: React.FC = () => {
               <p className="text-sm uppercase tracking-widest text-charcoal/50 mb-8">
                 Hotel photographer & content creator.
               </p>
-              <div className="space-y-6 text-lg md:text-xl font-light text-charcoal/80 max-w-2xl leading-relaxed">
+              <div className="space-y-6 text-lg md:text-base font-light text-charcoal/80 max-w-2xl leading-relaxed">
                 <p>
                   I'm Mehdi, a visual content creator working with boutique hotels, design-led stays, and travel brands. I help translate on-site atmosphere into visual stories that feel bookable online.
                 </p>
