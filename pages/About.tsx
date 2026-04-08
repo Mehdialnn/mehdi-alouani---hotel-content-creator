@@ -16,7 +16,7 @@ const About: React.FC = () => {
           <div className="md:col-span-7 flex flex-col justify-start">
             <Reveal delay={0.2}>
               <h1 className="text-5xl md:text-8xl font-serif mb-8 text-charcoal leading-[0.9]">
-                About <br/><span className="italic text-charcoal/60">Me</span>
+                About <span className="italic text-charcoal/60">Me</span>
               </h1>
               <p className="text-sm uppercase tracking-widest text-charcoal/50 mb-8">
                 Hotel photographer & content creator.
