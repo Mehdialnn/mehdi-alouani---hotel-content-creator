@@ -181,19 +181,13 @@ const Home: React.FC = () => {
           </Reveal>
 
           <Reveal delay={0.3}>
-            <div className="flex flex-col items-start gap-4 mt-4">
-              {/* Primary CTA */}
+            <div className="flex flex-col items-start gap-4 mt-10">
               <Link to="/contact" className="group flex items-center gap-3 px-6 py-3 bg-charcoal text-sand text-xs uppercase tracking-[0.2em] font-medium hover:bg-charcoal/90 transition-all">
                 Request Availability
                 <ArrowRight className="w-3 h-3 transition-transform group-hover:translate-x-1" />
               </Link>
-              {/* Secondary links */}
               <Link to="/work" className="group flex items-center gap-3 text-xs uppercase tracking-[0.2em] font-medium text-charcoal/60 hover:text-charcoal transition-all">
                 View Selected Work
-                <ArrowRight className="w-3 h-3 transition-transform group-hover:translate-x-1" />
-              </Link>
-              <Link to="/contact" className="group flex items-center gap-3 text-xs uppercase tracking-[0.2em] font-medium text-charcoal/60 hover:text-charcoal transition-all">
-                Get a Quote
                 <ArrowRight className="w-3 h-3 transition-transform group-hover:translate-x-1" />
               </Link>
             </div>
