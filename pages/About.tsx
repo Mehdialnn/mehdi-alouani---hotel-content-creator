@@ -13,23 +13,26 @@ const About: React.FC = () => {
               </div>
             </Reveal>
           </div>
-          <div className="md:col-span-7 flex flex-col justify-end">
+          <div className="md:col-span-7 flex flex-col justify-start">
             <Reveal delay={0.2}>
               <h1 className="text-5xl md:text-8xl font-serif mb-8 text-charcoal leading-[0.9]">
-                About <span className="italic text-charcoal/60">Me</span>
+                About <br/><span className="italic text-charcoal/60">Me</span>
               </h1>
               <p className="text-sm uppercase tracking-widest text-charcoal/50 mb-8">
                 Hotel photographer & content creator.
               </p>
               <div className="space-y-6 text-lg md:text-xl font-light text-charcoal/80 max-w-2xl leading-relaxed">
                 <p>
-                  I'm Mehdi. I make photos and videos for boutique hotels and travel brands that want their spaces to feel as good online as they do in person.
+                  I'm Mehdi, a visual content creator working with boutique hotels, design-led stays, and travel brands. I help translate on-site atmosphere into visual stories that feel bookable online.
                 </p>
                 <p>
-                  I'm drawn to the quiet details: morning light on a terrace, the texture of a well made room, the mood of a lobby before it fills up. That's usually what makes someone book.
+                  My work sits between editorial travel imagery and hotel marketing, with a focus on clean compositions, natural light, and the details guests actually remember.
                 </p>
                 <p>
-                  Based in Europe, available to travel. If you have a project in mind, I'd love to hear about it.
+                  I started by refining how I shoot and edit for social platforms, learning what makes people stop scrolling and picture themselves in a place. Today, I use that experience to build visual libraries for websites, OTAs, and social channels.
+                </p>
+                <p>
+                  Based in Europe, I travel regularly for projects. If you're working on a new opening or looking to elevate your visuals, let's talk.
                 </p>
               </div>
               <div className="mt-12 flex gap-12 text-xs uppercase tracking-[0.2em] opacity-60">
