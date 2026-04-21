@@ -3,6 +3,159 @@ import { motion, useScroll, useTransform, useInView } from 'framer-motion';
 import { ArrowRight } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
+// ---------------------------------------------------------------------------
+// SmartImage — responsive <picture> with AVIF/WebP and srcset.
+//
+// Expects a CDN that accepts URL params for format + width. The default
+// `buildVariant` below targets Cloudinary's URL API (`/image/upload/f_avif,w_800/...`)
+// and falls back to the original `src` if it can't pattern-match. Swap
+// `buildVariant` to match whichever CDN you end up on (imgix, Cloudflare
+// Images, Vercel image optimizer, etc.).
+//
+// If you haven't set up a CDN yet, pass `raw` to opt-out of variants — the
+// component still emits `loading`, `decoding`, and `sizes` which are the
+// cheapest perf wins.
+// ---------------------------------------------------------------------------
+
+type Variant = { src: string; width: number };
+
+const DEFAULT_WIDTHS = [400, 640, 960, 1280, 1920, 2560];
+
+// Default builder targets Vercel's built-in image optimizer at `/_vercel/image`.
+// Works out of the box on Vercel — no CDN account needed. Format negotiation
+// happens via the `Accept` header server-side, so we only vary `w` and `q`
+// per variant and let Vercel pick AVIF/WebP/JPEG. The `format` arg is kept
+// for API compatibility but ignored here.
+//
+// Swap this for Cloudinary / imgix / Cloudflare Images if you ever move off
+// Vercel; see the fallbacks below.
+function defaultBuildVariant(src: string, width: number, _format: 'avif' | 'webp' | 'jpg'): string {
+  // Vercel image optimizer — the standard path for any project on Vercel.
+  // Absolute `src` (same-origin or remote) must be URL-encoded.
+  if (src.startsWith('/') || src.startsWith('http')) {
+    return `/_vercel/image?url=${encodeURIComponent(src)}&w=${width}&q=75`;
+  }
+  // Cloudinary fallback (kept for future-proofing).
+  if (src.includes('/image/upload/')) {
+    return src.replace('/image/upload/', `/image/upload/f_auto,q_auto,w_${width}/`);
+  }
+  // Query-string CDNs (imgix, Cloudflare Images).
+  if (/\?/.test(src)) {
+    return `${src}&w=${width}&q=75`;
+  }
+  return src;
+}
+
+export const SmartImage: React.FC<{
+  src: string;
+  alt: string;
+  className?: string;
+  sizes?: string;            // e.g. "(min-width: 1024px) 50vw, 100vw"
+  widths?: number[];
+  priority?: boolean;        // true for above-the-fold hero; skips lazy-load
+  raw?: boolean;             // opt out of CDN variants (local file, already optimized, etc.)
+  buildVariant?: (src: string, width: number, format: 'avif' | 'webp' | 'jpg') => string;
+  draggable?: boolean;
+  style?: React.CSSProperties;
+}> = ({
+  src,
+  alt,
+  className = '',
+  sizes = '100vw',
+  widths = DEFAULT_WIDTHS,
+  priority = false,
+  raw = false,
+  buildVariant = defaultBuildVariant,
+  draggable,
+  style,
+}) => {
+  const makeSet = (format: 'avif' | 'webp' | 'jpg'): string | undefined => {
+    if (raw) return undefined;
+    const variants: Variant[] = widths.map((w) => ({
+      src: buildVariant(src, w, format),
+      width: w,
+    }));
+    // If the builder returned the same string for every width, we have no CDN —
+    // skip the srcset entirely rather than shipping a useless list.
+    const allSame = variants.every((v) => v.src === src);
+    if (allSame) return undefined;
+    return variants.map((v) => `${v.src} ${v.width}w`).join(', ');
+  };
+
+  // Detect builders that negotiate format server-side (Vercel, Cloudinary f_auto).
+  // In that case, one <source> is enough; emitting 3 wastes bandwidth on 3x the
+  // srcset parsing and confuses browsers into picking the wrong candidate.
+  const sample = !raw ? buildVariant(src, widths[0], 'avif') : src;
+  const serverNegotiates = sample.includes('/_vercel/image') || sample.includes('f_auto');
+
+  const avifSet = serverNegotiates ? makeSet('avif') : makeSet('avif');
+  const webpSet = serverNegotiates ? undefined : makeSet('webp');
+  const jpgSet = serverNegotiates ? undefined : makeSet('jpg');
+
+  return (
+    <picture>
+      {avifSet && <source type="image/avif" srcSet={avifSet} sizes={sizes} />}
+      {webpSet && <source type="image/webp" srcSet={webpSet} sizes={sizes} />}
+      <img
+        src={src}
+        srcSet={jpgSet}
+        sizes={sizes}
+        alt={alt}
+        className={className}
+        loading={priority ? 'eager' : 'lazy'}
+        decoding="async"
+        fetchPriority={priority ? 'high' : 'auto'}
+        draggable={draggable}
+        style={style}
+      />
+    </picture>
+  );
+};
+
+// ---------------------------------------------------------------------------
+// Avatar — typeset initials in a disc. Replaces picsum.photos placeholders.
+// If/when you add real client headshots, pass `src`; otherwise it renders
+// initials on a muted stone background. No more random stock faces next to
+// real testimonials.
+// ---------------------------------------------------------------------------
+
+export const Avatar: React.FC<{
+  name: string;
+  src?: string;
+  size?: number;
+  className?: string;
+}> = ({ name, src, size = 40, className = '' }) => {
+  const initials = name
+    .split(/\s+/)
+    .filter(Boolean)
+    .slice(0, 2)
+    .map((w) => w[0]?.toUpperCase() ?? '')
+    .join('');
+
+  const dimension = `${size}px`;
+  if (src) {
+    return (
+      <div
+        className={`rounded-full overflow-hidden bg-stone-200 ${className}`}
+        style={{ width: dimension, height: dimension }}
+      >
+        <img src={src} alt={name} className="w-full h-full object-cover" loading="lazy" decoding="async" />
+      </div>
+    );
+  }
+
+  return (
+    <div
+      aria-hidden="true"
+      className={`rounded-full flex items-center justify-center bg-charcoal/5 border border-charcoal/10 text-charcoal/70 font-serif ${className}`}
+      style={{ width: dimension, height: dimension, fontSize: size * 0.38 }}
+      title={name}
+    >
+      {initials || '·'}
+    </div>
+  );
+};
+
 export const Button: React.FC<{ 
   children: React.ReactNode; 
   variant?: 'primary' | 'secondary' | 'outline';
@@ -75,11 +228,12 @@ export const ProjectCard: React.FC<{
   return (
     <Link to={`/collaborations/${id}`} className="block group relative">
       <div className="relative overflow-hidden aspect-[3/4] bg-stone-200">
-        <motion.img 
-          src={image} 
+        {/* SmartImage: AVIF/WebP via <picture>, responsive srcset, lazy by default */}
+        <SmartImage
+          src={image}
           alt={title}
+          sizes="(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw"
           className="w-full h-full object-cover transition-transform duration-1000 ease-out group-hover:scale-110"
-          loading="lazy"
         />
         <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-colors duration-500" />
       </div>

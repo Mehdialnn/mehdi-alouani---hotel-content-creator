@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { useParams, Navigate } from 'react-router-dom';
 import { projects } from '../data';
-import { Button, Reveal, BeforeAfter } from '../components/UI';
+import { Button, Reveal, BeforeAfter, Avatar, SmartImage } from '../components/UI';
 import { ArrowLeft, Check } from 'lucide-react';
 
 const ProjectDetail: React.FC = () => {
@@ -18,9 +18,12 @@ const ProjectDetail: React.FC = () => {
     <main className="min-h-screen pb-20 bg-sand">
       {/* Editorial Hero */}
       <div className="relative h-screen w-full overflow-hidden">
-        <img 
-          src={project.heroImage} 
-          alt={project.name} 
+        {/* SmartImage w/ priority for LCP. Emits AVIF/WebP srcset via <picture>. */}
+        <SmartImage
+          src={project.heroImage}
+          alt={project.name}
+          priority
+          sizes="100vw"
           className="w-full h-full object-cover"
         />
         <div className="absolute inset-0 bg-black/20" />
@@ -96,10 +99,11 @@ const ProjectDetail: React.FC = () => {
               {project.gallery.map((img, idx) => (
                 <Reveal key={idx} delay={0.1}>
                   <div className={`relative ${idx % 2 === 0 ? 'w-full aspect-video' : 'w-[80%] aspect-[4/5] ml-auto'}`}>
-                    <img 
-                      src={img} 
-                      alt={`Gallery ${idx}`} 
-                      className="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-1000" 
+                    <SmartImage
+                      src={img}
+                      alt={`Gallery ${idx}`}
+                      sizes="(min-width: 1024px) 66vw, 100vw"
+                      className="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-1000"
                     />
                     <span className="absolute -bottom-8 left-0 text-[10px] uppercase tracking-widest text-charcoal/30">Figure 0{idx + 1}</span>
                   </div>
@@ -135,9 +139,11 @@ const ProjectDetail: React.FC = () => {
                          <span className="text-6xl text-charcoal/10 font-serif absolute top-4 left-4">“</span>
                          <p className="italic text-lg text-charcoal/80 mb-6 relative z-10">"{project.testimonial.quote}"</p>
                          <div className="flex items-center gap-4">
-                           <div className="w-10 h-10 bg-stone-200 rounded-full overflow-hidden">
-                             <img src={`https://picsum.photos/seed/${project.id}/100/100`} className="w-full h-full object-cover grayscale" />
-                           </div>
+                           {/* CHANGED: typeset initials instead of random picsum stock avatar.
+                               Avoids shipping a stock face next to a real client quote — the
+                               single biggest credibility leak in the previous version. Pass
+                               a real headshot src to <Avatar> when/if one exists. */}
+                           <Avatar name={project.testimonial.author} size={40} />
                            <div>
                              <p className="text-xs font-bold uppercase tracking-wider">{project.testimonial.author}</p>
                              <p className="text-[10px] text-charcoal/50">{project.testimonial.role}</p>
