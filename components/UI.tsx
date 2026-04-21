@@ -19,30 +19,25 @@ import { Link } from 'react-router-dom';
 
 type Variant = { src: string; width: number };
 
-const DEFAULT_WIDTHS = [400, 640, 960, 1280, 1920, 2560];
+const DEFAULT_WIDTHS = [400, 800, 1200, 1920, 2560];
 
-// Default builder targets Vercel's built-in image optimizer at `/_vercel/image`.
-// Works out of the box on Vercel — no CDN account needed. Format negotiation
-// happens via the `Accept` header server-side, so we only vary `w` and `q`
-// per variant and let Vercel pick AVIF/WebP/JPEG. The `format` arg is kept
-// for API compatibility but ignored here.
+// Default builder — rewrites `/theretreat/1.jpg` into the sibling variants
+// produced by scripts/generate-image-variants.mjs (AVIF + WebP at 5 widths).
+// If no match, returns the original so nothing 404s.
 //
-// Swap this for Cloudinary / imgix / Cloudflare Images if you ever move off
-// Vercel; see the fallbacks below.
-function defaultBuildVariant(src: string, width: number, _format: 'avif' | 'webp' | 'jpg'): string {
-  // Vercel image optimizer — the standard path for any project on Vercel.
-  // Absolute `src` (same-origin or remote) must be URL-encoded.
-  if (src.startsWith('/') || src.startsWith('http')) {
-    return `/_vercel/image?url=${encodeURIComponent(src)}&w=${width}&q=75`;
-  }
-  // Cloudinary fallback (kept for future-proofing).
+// Example outputs for format='avif', width=1200:
+//   /theretreat/1.jpg  ->  /theretreat/1-1200w.avif
+//   /botanica/DSC04626.JPG -> /botanica/DSC04626-1200w.avif
+function defaultBuildVariant(src: string, width: number, format: 'avif' | 'webp' | 'jpg'): string {
+  // Cloudinary (kept for future-proofing — triggers only on matching paths).
   if (src.includes('/image/upload/')) {
     return src.replace('/image/upload/', `/image/upload/f_auto,q_auto,w_${width}/`);
   }
-  // Query-string CDNs (imgix, Cloudflare Images).
-  if (/\?/.test(src)) {
-    return `${src}&w=${width}&q=75`;
-  }
+  // Local JPEG/PNG — swap extension for the pre-generated sibling.
+  // `jpg` fallback keeps the original untouched so the <img src> still resolves.
+  if (format === 'jpg') return src;
+  const m = src.match(/^(.*)\.(jpe?g|png)$/i);
+  if (m) return `${m[1]}-${width}w.${format}`;
   return src;
 }
 
@@ -82,15 +77,11 @@ export const SmartImage: React.FC<{
     return variants.map((v) => `${v.src} ${v.width}w`).join(', ');
   };
 
-  // Detect builders that negotiate format server-side (Vercel, Cloudinary f_auto).
-  // In that case, one <source> is enough; emitting 3 wastes bandwidth on 3x the
-  // srcset parsing and confuses browsers into picking the wrong candidate.
-  const sample = !raw ? buildVariant(src, widths[0], 'avif') : src;
-  const serverNegotiates = sample.includes('/_vercel/image') || sample.includes('f_auto');
-
-  const avifSet = serverNegotiates ? makeSet('avif') : makeSet('avif');
-  const webpSet = serverNegotiates ? undefined : makeSet('webp');
-  const jpgSet = serverNegotiates ? undefined : makeSet('jpg');
+  // Pre-generated siblings: emit both AVIF and WebP sources; the <img> src
+  // stays as the original JPEG as a final fallback.
+  const avifSet = makeSet('avif');
+  const webpSet = makeSet('webp');
+  const jpgSet = makeSet('jpg');
 
   return (
     <picture>
