@@ -125,16 +125,6 @@ const SimpleCarousel = () => {
   );
 };
 
-// Pulled from `projects` — the repo's own data. Trimmed to the strongest names.
-const CLIENT_LIST = [
-  'Sea Containers, London',
-  'Prince Park Tower, Tokyo',
-  'Hotel Telegraphenamt, Berlin',
-  'The Dolli at Acropolis, Athens',
-  'Malkata House, Luxor',
-  'Vila Foz Hotel, Porto',
-];
-
 const Home: React.FC = () => {
   const [logoHovered, setLogoHovered] = useState(false);
   return (
@@ -195,54 +185,25 @@ const Home: React.FC = () => {
           </Reveal>
         </div>
 
-        {/* Introduction — REWRITTEN LEDE */}
+        {/* Introduction */}
         <div className="flex flex-col gap-6 justify-center">
           <Reveal delay={0.2}>
-            {/* NEW: value-first headline. Answers "what will this do for my hotel?" */}
-            <p className="text-base md:text-lg font-serif leading-snug text-charcoal max-w-sm">
-              Visual content that turns hotel atmosphere into direct bookings and
-              a stronger brand.
+            <p className="text-sm md:text-base font-light leading-7 text-charcoal/80 max-w-sm">
+              Hotel photography & content, focused on atmosphere.
             </p>
-            {/* Supporting line — the old first line, demoted to subhead */}
-            <p className="text-sm font-light leading-6 text-charcoal/60 max-w-sm mt-4">
-              Photography, video and social content for boutique, heritage and
-              design-led properties — from brief to delivery.
+            <p className="text-sm md:text-base font-light leading-7 text-charcoal/60 max-w-sm mt-3">
+              Capturing the silence of heritage hotels, the texture of design, and the dignity of service — to drive direct bookings and elevate brand perception.
             </p>
-          </Reveal>
-
-          {/* NEW: typeset client list. Instant credibility, no images required. */}
-          <Reveal delay={0.25}>
-            <div className="mt-4 border-t border-charcoal/10 pt-4 max-w-sm">
-              <p className="text-[9px] uppercase tracking-[0.3em] text-charcoal/40 mb-2">
-                Selected clients
-              </p>
-              <ul className="text-[11px] leading-[1.9] text-charcoal/70 font-light">
-                {CLIENT_LIST.map((c) => (
-                  <li key={c}>{c}</li>
-                ))}
-              </ul>
-            </div>
           </Reveal>
 
           <Reveal delay={0.3}>
-            <div className="flex flex-col items-start gap-3 mt-8">
-              <Link
-                to="/contact"
-                className="group flex items-center gap-3 px-6 py-3 bg-charcoal text-sand text-xs uppercase tracking-[0.2em] font-medium hover:bg-charcoal/90 transition-all"
-              >
+            <div className="flex flex-col items-start gap-4 mt-10">
+              <Link to="/contact" className="group flex items-center gap-3 px-6 py-3 bg-charcoal text-sand text-xs uppercase tracking-[0.2em] font-medium hover:bg-charcoal/90 transition-all">
                 Request Availability
                 <ArrowRight className="w-3 h-3 transition-transform group-hover:translate-x-1" />
               </Link>
-              {/* NEW: response-expectation microcopy. Reduces inquiry friction. */}
-              <p className="text-[10px] uppercase tracking-[0.25em] text-charcoal/40">
-                Replies within 24 hours
-              </p>
-              {/* Demoted secondary CTA to a quieter text link */}
-              <Link
-                to="/work"
-                className="group inline-flex items-center gap-2 text-[10px] uppercase tracking-[0.25em] text-charcoal/50 hover:text-charcoal transition-all mt-2"
-              >
-                View selected work
+              <Link to="/work" className="group flex items-center gap-3 text-xs uppercase tracking-[0.2em] font-medium text-charcoal/60 hover:text-charcoal transition-all">
+                View Selected Work
                 <ArrowRight className="w-3 h-3 transition-transform group-hover:translate-x-1" />
               </Link>
             </div>
