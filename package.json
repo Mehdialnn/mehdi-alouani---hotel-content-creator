@@ -6,7 +6,7 @@
   "scripts": {
     "dev": "vite",
     "images": "node scripts/generate-image-variants.mjs",
-    "prebuild": "npm run images",
+    "prebuild": "node -e \"process.env.VERCEL||require('child_process').execSync('npm run images',{stdio:'inherit'})\"",
     "build": "vite build",
     "preview": "vite preview"
   },
