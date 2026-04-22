@@ -66,7 +66,7 @@ const Contact: React.FC = () => {
               <div className="space-y-4 text-[11px] uppercase tracking-[0.2em]">
                 <div>
                   <span className="block text-sand/40 mb-1">Email</span>
-                  <a href="mailto:hello@mavisuals.co" className="text-sand hover:text-sand/70 transition-colors">hello@mavisuals.co</a>
+                  <a href="mailto:mehdi@mavisuals.co" className="text-sand hover:text-sand/70 transition-colors">mehdi@mavisuals.co</a>
                 </div>
                 <div>
                   <span className="block text-sand/40 mb-1">Instagram</span>

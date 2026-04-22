@@ -42,7 +42,7 @@ const About: React.FC = () => {
                 </div>
                 <div>
                   <span className="block font-bold mb-2">Direct Contact</span>
-                  hello@mavisuals.co
+                  mehdi@mavisuals.co
                 </div>
               </div>
             </Reveal>
