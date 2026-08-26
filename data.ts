@@ -102,6 +102,20 @@ export const portfolioGrid: PortfolioItem[] = [
     location: 'Porto',
     size: 'tall',
   },
+  {
+    id: 'grand-ferdinand-1',
+    image: '/grandferdinand/1.jpg',
+    title: 'Grand Ferdinand',
+    location: 'Vienna',
+    size: 'tall',
+  },
+  {
+    id: 'parisi-udvar-1',
+    image: '/parisiudvar/1.jpg',
+    title: 'Párisi Udvar Hotel',
+    location: 'Budapest',
+    size: 'tall',
+  },
 ];
 
 export const projects: Project[] = [
@@ -325,6 +339,42 @@ export const projects: Project[] = [
     challenge: 'Rendering the layered richness of the interiors — ornate ceilings, marble, and curated art — without overwhelming the sense of intimacy.',
     approach: 'Using the soft Atlantic light flooding through the tall windows to anchor each frame in place and mood.',
     result: 'A refined visual portfolio that reflects the hotel\'s position as one of Porto\'s finest luxury addresses.',
+  },
+  {
+    id: 'grand-ferdinand',
+    name: 'Grand Ferdinand',
+    category: 'City',
+    location: 'Vienna',
+    year: '2026',
+    deliverables: ['Interior Photography', 'Social Reels'],
+    heroImage: '/grandferdinand/1.jpg',
+    gallery: [
+      '/grandferdinand/2.jpg',
+      '/grandferdinand/3.jpg',
+      '/grandferdinand/4.jpg',
+    ],
+    description: 'Mid-century design, Persian rugs and Austrian hospitality on Vienna\'s Ringstra\u00dfe.',
+    challenge: 'Holding the balance between the hotel\'s mid-century interiors and the Ringstra\u00dfe framed in every bay window.',
+    approach: 'Working with the dark woods and warm textiles of the rooms, then following the light up to the rooftop as the city skyline turned.',
+    result: 'A carousel and reel released across The Hotels Diary.',
+  },
+  {
+    id: 'parisi-udvar',
+    name: 'P\u00e1risi Udvar Hotel',
+    category: 'Heritage',
+    location: 'Budapest',
+    year: '2026',
+    deliverables: ['Architecture', 'Social Reels'],
+    heroImage: '/parisiudvar/1.jpg',
+    gallery: [
+      '/parisiudvar/2.jpg',
+      '/parisiudvar/3.jpg',
+      '/parisiudvar/4.jpg',
+    ],
+    description: 'Moorish detail, Gothic arches and Art Nouveau ironwork gathered beneath a glass-domed passage in the heart of Budapest.',
+    challenge: 'The P\u00e1risi Passage is a difficult room to read \u2014 patterned glass overhead, deep shadow below, and ornament in every direction.',
+    approach: 'Letting the filtered light from the dome carry the frame, and composing along the arches rather than against them.',
+    result: 'Featured on The Hotels Diary.',
   },
 ];
 
