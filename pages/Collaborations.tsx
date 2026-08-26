@@ -62,7 +62,7 @@ const ImageSlider: React.FC<ImageSliderProps> = ({ hotelId, defaultImage, title,
       {/* Hotel info — FLIPPED: visible by default, fades on hover.
           Why: the previous build hid names until hover, which was hostile to scanning
           (especially on touch where hover doesn't exist cleanly). A marketing director
-          scanning 12 projects in 10 seconds needs to read names without interacting.
+          scanning 14 projects in 10 seconds needs to read names without interacting.
           Hover now reveals the clean image, not the label. */}
       <div
         className={`absolute bottom-2 md:bottom-6 left-2 md:left-6 right-10 md:right-6
