@@ -367,8 +367,8 @@ export const projects: Project[] = [
     deliverables: ['Architecture', 'Social Reels'],
     heroImage: '/parisiudvar/1.jpg',
     gallery: [
-      '/parisiudvar/2.jpg',
       '/parisiudvar/3.jpg',
+      '/parisiudvar/2.jpg',
       '/parisiudvar/4.jpg',
     ],
     description: 'Moorish detail, Gothic arches and Art Nouveau ironwork gathered beneath a glass-domed passage in the heart of Budapest.',
