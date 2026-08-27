@@ -12,10 +12,14 @@ export interface PortfolioItem {
   };
 }
 
-// Portfolio grid - 9 images (3 rows of 3)
-// Position 3 in each block (index 2, 5, 8) is the BIG image
+// Portfolio grid — rendered by Collaborations.tsx, which chunks this list into
+// blocks of 3 (see `organizedBlocks`). Within each block the first two items are
+// the small side-by-side pair and the third gets the tall full-height column;
+// blocks alternate which side that tall column sits on.
+//
+// So order here is layout: moving an item changes both its block and its size.
+// A count that isn't a multiple of 3 leaves the final block short a tall image.
 export const portfolioGrid: PortfolioItem[] = [
-  // Block 1: Small, Small, BIG (Telegraphenamt DSC04339)
   {
     id: 'the-retreat-1',
     image: '/theretreat/1.jpg',
@@ -44,19 +48,18 @@ export const portfolioGrid: PortfolioItem[] = [
     location: 'Berlin',
     size: 'tall',
   },
-  // Block 2: Small, Small, BIG (Malkata DSC04995)
   {
-    id: 'sea-containers-1',
-    image: '/seacontainer/DSC03952.jpg',
-    title: 'Sea Containers',
-    location: 'London',
+    id: 'grand-ferdinand-1',
+    image: '/grandferdinand/1.jpg',
+    title: 'Grand Ferdinand',
+    location: 'Vienna',
     size: 'tall',
   },
   {
-    id: 'casa-amarilla-1',
-    image: '/casaamarilla/DSC01432.jpg',
-    title: 'La Casa Amarilla',
-    location: 'Tenerife',
+    id: 'parisi-udvar-1',
+    image: '/parisiudvar/1.jpg',
+    title: 'Párisi Udvar Hotel',
+    location: 'Budapest',
     size: 'tall',
   },
   {
@@ -66,7 +69,6 @@ export const portfolioGrid: PortfolioItem[] = [
     location: 'Luxor',
     size: 'tall',
   },
-  // Block 3: Small, Small, BIG (Riad Botanica DSC04626)
   {
     id: 'prince-park-1',
     image: '/princepark/DSC02798.jpg',
@@ -103,17 +105,17 @@ export const portfolioGrid: PortfolioItem[] = [
     size: 'tall',
   },
   {
-    id: 'grand-ferdinand-1',
-    image: '/grandferdinand/1.jpg',
-    title: 'Grand Ferdinand',
-    location: 'Vienna',
+    id: 'sea-containers-1',
+    image: '/seacontainer/DSC03952.jpg',
+    title: 'Sea Containers',
+    location: 'London',
     size: 'tall',
   },
   {
-    id: 'parisi-udvar-1',
-    image: '/parisiudvar/1.jpg',
-    title: 'Párisi Udvar Hotel',
-    location: 'Budapest',
+    id: 'casa-amarilla-1',
+    image: '/casaamarilla/DSC01432.jpg',
+    title: 'La Casa Amarilla',
+    location: 'Tenerife',
     size: 'tall',
   },
 ];
