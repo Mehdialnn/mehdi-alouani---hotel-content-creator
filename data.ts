@@ -413,4 +413,12 @@ export const testimonials: Testimonial[] = [
     location: 'Athens',
     quote: 'The team and I truly enjoyed your perspective of the Maison. You captured the atmosphere here beautifully, and we appreciate the care you took in presenting The Dolli to your audience.',
   },
+  {
+    id: '5',
+    hotel: 'P\u00e1risi Udvar Hotel',
+    author: 'Marketing & PR Executive',
+    role: 'Marketing',
+    location: 'Budapest',
+    quote: 'Thank you for the beautiful content. We truly appreciate the quality of the images and the atmosphere of P\u00e1risi Udvar Hotel you captured so thoughtfully.',
+  },
 ];
